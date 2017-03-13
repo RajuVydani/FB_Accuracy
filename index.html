@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jquery</title>
+	<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript">
+
+			//var ids = '._5ss7';
+		$(document).ready(function(){
+			$('#click').click(function(){
+				$('.container2').append("<li>Item</li>");
+			});
+			
+			 $('input[type="radio"][value="Weapon Sale"]').on('click', function(){
+			 	console.log("Weapons clicked");
+			 	$('#radioSection').empty();
+			 	//var radios = "<input id=\"one\" type=\"radio\" value=\"Weapon Sale\">Yes";
+			 	$('#radioSection').append("<h1>New Screen</h1>");
+			 	var display = $('#radioSection').text();
+			 	console.log(display);
+			 });
+
+			
+			// select the target node
+			var target = document.getElementsByClassName('container');
+
+			// create an observer instance
+			var observer = new MutationObserver(function(mutations) {
+			  mutations.forEach(function(mutation) {
+			    console.log(mutation.type);
+			    $('')
+			  }); 
+
+				  // configuration of the observer:
+			var config = { attributes: true, childList: true, characterData: true, subtree:true };
+			 
+			// pass in the target node, as well as the observer options
+			observer.observe(target[0], config);
+		});
+	 
+		
+		});
+	</script>
+</head>
+<body>
+	<button id="click">Click</button>
+
+	<div id="cont" class="container">
+		<ul id="cont2" class="container2">
+		
+		</ul>		
+	</div>
+
+	<div id="radioSection">
+		<input id="one" type="radio" value="Weapon Sale">Yes <br>
+		<input id="two" type="radio" value="two">No	
+	</div>
+	
+</body>
+</html>
+

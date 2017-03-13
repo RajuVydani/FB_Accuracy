@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Facebook SRT Extension.",
-  "description": "This extension provides shortcutKeys to improve productivity. [Ex: ALT+1/2/3...6]",
+  "name": "Facebook SRT Extension [Accuracy Improvement].",
+  "description": "This extension shows alerts for Accuracy Improvements.",
   "version": "1.0",
   "icons": { 
       "48": "facebook.png"
@@ -12,8 +12,8 @@
   ],
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*", "file:///*"],
-      "js": ["shortcut.js"]
+      "matches": ["https://review.intern.facebook.com/*", "file://*/*"],
+      "js": ["js/jquery-2.2.4.min.js", "accuracy.js"]
     }
   ],
   "background" : {
@@ -24,31 +24,28 @@
       "suggested_key": {
         "default": "Alt+1"
       },
-      "description": "COMBINATION_1"
+      "description": "tags: [ Entertainment/gaming ] [ None of the policies below ] [Absolutely Certain]"
     },
     "COMBINATION_2": {
       "suggested_key": {
-        "default": "Alt+1"
+        "default": "Alt+2"
       },
-      "description": "COMBINATION_2"
+      "description": "tags: [ None of the products/services below ] [ 9-Facebook Reference ] [7-Incorrect 'f' Logo] [1-No] [f-Absolutely Certain]"
     },
     "COMBINATION_3": {
       "suggested_key": {
         "default": "Alt+1"
       },
-      "description": "COMBINATION_3"
+      "description": "tags: [  ] [  ]"
     },
     "COMBINATION_4": {
       "suggested_key": {
         "default": "Alt+1"
       },
-      "description": "COMBINATION_4"
+      "description": "tags: [  ] [  ]"
     },
     "COMBINATION_5": {     
-      "description": "COMBINATION_5"
-    },
-    "COMBINATION_6": {      
-      "description": "COMBINATION_6"
-    }
+      "description": "tags: [  ] [  ] [] []"
+    }    
   }
 }
