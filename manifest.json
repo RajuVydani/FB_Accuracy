@@ -10,6 +10,11 @@
   "permissions": [
     "activeTab"
   ],
+  "browser_action": {
+    "default_icon": "facebook.png",
+    "default_title": "Facebook Videos -Accuracy Improvement",
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
       "matches": ["https://review.intern.facebook.com/*", "file://*/*"],

@@ -1,4 +1,13 @@
+FB videos Team !!!
 
+Improve accuracy in videos team.
+
+This extension will show alerts when the agents clicked the tags which they often select wrongly.
+
+Extension
+	Captures loggedinuser name.
+	Shows alerts when corresponding tag is clicked.
+	It reads keyboard presses as well.
 
 ASCII values for alphabets.
 "65": "A",    
