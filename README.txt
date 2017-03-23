@@ -10,6 +10,14 @@ Extension
 	Shows alerts when corresponding tag is clicked.
 	It reads keyboard presses as well.
 
+Log:
+=======
+Added Users data in the js file.
+Need to implement 
+	-log the user decision after popup came up.
+	-Show customized popup.
+
+
 ASCII values for alphabets.
 "65": "A",    
 "66": "B",    "67": "C",    "68": "D",    "69": "E",    "70": "F",    

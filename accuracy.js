@@ -32,21 +32,7 @@ $(document).ready(function(){
 	console.log("userName", userName);
 	console.log("userTooltipName", userTooltipName);
 
-	//Users object.
-	/*user = {
-		"Rubesh" : [
-					"Entertainment/gaming-No, none of the below-Absolutely Certain",
-					"Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-					"Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
-					"None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain"
-				   ],
-		"Avik"   : [
-					"Adult product/service (explicit sale of)-Absolutely Certain",
-					"Non-Adult Health Physical Improvement (explicit sale of)-Clinic non-surgical services (ex: dental non-surgery)-No, none of the below-Absolutely Certain",
-					"None of the products/services below-Profanity-Absolutely Certain"
-				   ]
-	};*/
-
+	//Adding users for testing.
 	user["Rubesh"] = [
 						"Entertainment/gaming-No, none of the below-Absolutely Certain",
 						"Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -58,22 +44,13 @@ $(document).ready(function(){
 						"Non-Adult Health Physical Improvement (explicit sale of)-Clinic non-surgical services (ex: dental non-surgery)-No, none of the below-Absolutely Certain",
 						"None of the products/services below-Profanity-Absolutely Certain"
 				   	 ];
-
+	//If LoggedInUser not present in the users list here, throws error.
 	if(undefined !== user[userName]) {
-
 		//"clickTags" -stores all the extracted tags for the loggedin user from var "user".
 		//It will be used by "MouseClick" events.
 		var clickTags = user[userName];
 
-		/*//Hardcode all the tags with Keycode for which, alerts needs to be shown !!!
-		var keysCollection = {
-			"Weapon Sale": ["88-Weapon Sale", "120-Weapon Sale"],
-			"Absolutely Certain": ["70-Absolutely Certain", "102-Absolutely Certain"],
-			"Online Pharm": ["65-Online Pharm", "97-Online Pharm"]
-		};
-
-		//Tags used for keyPresses.
-		var keyPressTags = []; */
+		log("Tags under \"MouseClick\",\"Keypress\" events", clickTags);
 
 		//Captures Mouse clicks...
 		$('div#content').on('click', "input[type=\"radio\"][value=\"Absolutely Certain\"]", function(){
@@ -97,9 +74,6 @@ $(document).ready(function(){
 			}
 		});
 
-		log("Tags under \"MouseClick\" event", clickTags);
-		//log("Tags under \"keyPress\" event", keyPressTags);
-
 		//Fetches all the tags in the "arrow status bar" in an array.
 		function getTags() {
 			console.log("getTags");
@@ -118,51 +92,6 @@ $(document).ready(function(){
 			}//.............................Checking "arrow status bar" has data
 			return tag;
 		}
-
-		/*//Captures Mouse clicks...
-		$.each(clickTags, function(index, value){
-			var inputString = "input[type=\"radio\"][value=\"" + value + "\"]";
-			log(inputString);
-
-			//Captures Mouse clicks...
-			$('div#content').on('click', inputString, function(){
-				log("Listening the click event...");
-				alert("Are you sure !!!");
-			});
-
-			//Building keyPressTags
-			if(undefined !== keysCollection[value]) {
-				keyPressTags.push(keysCollection[value][0]);
-				keyPressTags.push(keysCollection[value][1]);
-			}
-		});*/
-
-		//Captures Keypresses...
-		/*$(document).on('keypress', function(event){
-			log("Key pressed--->"+event.which);
-			
-			if($('div._5awe').length > 0) { //Checking "arrow status bar" has data
-
-				//Fetches all the tags in the "arrow status bar" in an array.
-				var tags = getText('div._5awe');
-				log("Tags in Arrow status bar::", tags);
-
-				//Gets the key pressed, the last tag present in arrow bar and put in the format "88-Weapon Sale"
-				//Then checks whether this combination is there in given set of combinations [keyPressTags].
-				if(-1 !== $.inArray(event.which + "-" + tags[tags.length-1], keyPressTags)) {
-					alert("Are you sure ???");
-				}
-			}//.............................Checking "arrow status bar" has data
-		});*/
-
-		/*//Fetches all the tags in an array.
-		function getText(element) {
-			var tags = [];
-			$(element).each(function() {
-				tags.push($(this).text());
-			});
-			return tags;
-		}*/
 	} else {
 		console.error("=================>loggedin user not in the list");
 	} // LoggedInUser
@@ -172,7 +101,7 @@ $(document).ready(function(){
 	var user = 
 				{
 				  "A Sravanthi": [
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -184,7 +113,7 @@ $(document).ready(function(){
 				  ],
 				  "Abdul Aleen": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -197,7 +126,7 @@ $(document).ready(function(){
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Profanity-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -206,7 +135,7 @@ $(document).ready(function(){
 				  ],
 				  "Anusha Regulagadda": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -217,7 +146,7 @@ $(document).ready(function(){
 				  ],
 				  "ARDHI DEEPAK RAO": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -227,7 +156,7 @@ $(document).ready(function(){
 				    "Adult Health (explicit sale of)-Surgery-No, none of the below-Absolutely Certain"
 				  ],
 				  "Ashwini Gandla": [
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -239,7 +168,7 @@ $(document).ready(function(){
 				  ],
 				  "Ashwini Sneha": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -252,7 +181,7 @@ $(document).ready(function(){
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Cosmetic services (ex: waxing)-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Clinic non-surgical services (ex: dental non-surgery)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -261,7 +190,7 @@ $(document).ready(function(){
 				  ],
 				  "Bhanu Kalahasti": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -272,7 +201,7 @@ $(document).ready(function(){
 				  ],
 				  "Bhargav Varma Chinda": [
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
@@ -283,7 +212,7 @@ $(document).ready(function(){
 				  ],
 				  "Brahmendra Tanneeru": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -294,7 +223,7 @@ $(document).ready(function(){
 				  ],
 				  "Chandan Kumar S": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
@@ -305,7 +234,7 @@ $(document).ready(function(){
 				  ],
 				  "Deepika G": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Profanity-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -316,7 +245,7 @@ $(document).ready(function(){
 				  ],
 				  "Farha Nausheen": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -326,7 +255,7 @@ $(document).ready(function(){
 				    "Adult Health (explicit sale of)-Surgery-No, none of the below-Absolutely Certain"
 				  ],
 				  "Girimalla Kathyaini": [
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -340,7 +269,7 @@ $(document).ready(function(){
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Cosmetic services (ex: waxing)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Botox-No, none of the below-Absolutely Certain",
@@ -349,7 +278,7 @@ $(document).ready(function(){
 				  ],
 				  "Goutham Chennamadhavuni": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -360,7 +289,7 @@ $(document).ready(function(){
 				  ],
 				  "Jadali Sushmita": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -371,7 +300,7 @@ $(document).ready(function(){
 				  ],
 				  "K Ramu": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -382,7 +311,7 @@ $(document).ready(function(){
 				  ],
 				  "K Saraswathi": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -393,7 +322,7 @@ $(document).ready(function(){
 				  ],
 				  "Keerthi Jyothi": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -404,7 +333,7 @@ $(document).ready(function(){
 				  ],
 				  "Manikantareddy Reddy": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -415,7 +344,7 @@ $(document).ready(function(){
 				  ],
 				  "manohar soodula": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -426,7 +355,7 @@ $(document).ready(function(){
 				  ],
 				  "Mirza Hameed Baig": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
@@ -438,7 +367,7 @@ $(document).ready(function(){
 				  "Mohammed Uzair": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
@@ -448,7 +377,7 @@ $(document).ready(function(){
 				  ],
 				  "Mouna Priya": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -459,7 +388,7 @@ $(document).ready(function(){
 				  ],
 				  "Naresh K": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Profanity-Absolutely Certain",
@@ -470,7 +399,7 @@ $(document).ready(function(){
 				  ],
 				  "Ninny Gidda": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -481,7 +410,7 @@ $(document).ready(function(){
 				  ],
 				  "Nithin Chepyala": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -492,7 +421,7 @@ $(document).ready(function(){
 				  ],
 				  "Pooja Thakur": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Clinic non-surgical services (ex: dental non-surgery)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -503,7 +432,7 @@ $(document).ready(function(){
 				  ],
 				  "Prajwal Ganji": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
@@ -514,7 +443,7 @@ $(document).ready(function(){
 				  ],
 				  "Prashanth Buyankar": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
@@ -525,7 +454,7 @@ $(document).ready(function(){
 				  ],
 				  "Praveen Potharaveni": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -536,7 +465,7 @@ $(document).ready(function(){
 				  ],
 				  "Preethi D": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -548,7 +477,7 @@ $(document).ready(function(){
 				  "Pruthvi Krishna": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
 				    "None of the products/services below-Profanity-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -558,7 +487,7 @@ $(document).ready(function(){
 				  ],
 				  "Ravi Kunchala": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -569,7 +498,7 @@ $(document).ready(function(){
 				  ],
 				  "Rebekah Lawrence": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
@@ -579,7 +508,7 @@ $(document).ready(function(){
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Clinic non-surgical services (ex: dental non-surgery)-No, none of the below-Absolutely Certain"
 				  ],
 				  "Reena Summera": [
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -592,7 +521,7 @@ $(document).ready(function(){
 				  "Sai Priya Vinder": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -601,7 +530,7 @@ $(document).ready(function(){
 				    "None of the products/services below-Profanity-Absolutely Certain"
 				  ],
 				  "Sai Sharan Chandra Macharla": [
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -613,7 +542,7 @@ $(document).ready(function(){
 				  ],
 				  "Sangeetha EM": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -624,7 +553,7 @@ $(document).ready(function(){
 				  ],
 				  "Shashidhar Maru": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -635,7 +564,7 @@ $(document).ready(function(){
 				  ],
 				  "Shikha Rani Upadhyay": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -646,7 +575,7 @@ $(document).ready(function(){
 				  ],
 				  "Simon Patakula": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -657,7 +586,7 @@ $(document).ready(function(){
 				  ],
 				  "Soni Khatun": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
@@ -667,7 +596,7 @@ $(document).ready(function(){
 				    "Adult Health (explicit sale of)-Surgery-No, none of the below-Absolutely Certain"
 				  ],
 				  "sreedhar Gangakhedkar": [
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -678,7 +607,7 @@ $(document).ready(function(){
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Cosmetic services (ex: waxing)-No, none of the below-Absolutely Certain"
 				  ],
 				  "Swetha Kandhada": [
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -690,7 +619,7 @@ $(document).ready(function(){
 				  ],
 				  "SyedMeesum Hussain Razvi": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Alcohol (explicit sale of)-None of the below-Absolutely Certain",
@@ -701,7 +630,7 @@ $(document).ready(function(){
 				  ],
 				  "VamshiRaju Dappu": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
@@ -712,7 +641,7 @@ $(document).ready(function(){
 				  ],
 				  "Vineeth Madiraju": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Profanity-Absolutely Certain",
@@ -723,7 +652,7 @@ $(document).ready(function(){
 				  ],
 				  "Vinu Anthony": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -733,7 +662,7 @@ $(document).ready(function(){
 				    "None of the products/services below-Profanity-Absolutely Certain"
 				  ],
 				  "VIshal Tiwari": [
-				    "Entertainment/gaming-None of the policies below-Absolutely Certain",
+				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "None of the products/services below-Facebook Reference-Incorrect \"f\" Logo-No-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
