@@ -18,7 +18,7 @@
   "content_scripts": [
     {
       "matches": ["https://review.intern.facebook.com/*", "file://*/*"],
-      "js": ["js/jquery-2.2.4.min.js", "accuracy.js"]
+      "js": ["js/jquery-2.2.4.min.js", "accuracy.js", "users.js"]
     }
   ],
   "background" : {
