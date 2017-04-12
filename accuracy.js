@@ -140,16 +140,19 @@ $(document).ready(function(){
 
 		//Rest calls START
 		function postRequest() {
-			log("In PostRequest", userName);
+			console.log("In PostRequest", userName);
 			//var url = "http://10.142.131.108:8088/api/";
-			var url = "http://localhost:4000/api/";
+			//var url = "http://localhost:4000/api/";
+			var url = "http://localhost:3000/fb/videos/agents";
 
-			var href = url + userName;
-			log(href, null);
+			var href = url;
+			console.log(href, null);
+			var data = {name: 'raju', team: 'videos'};
 			$.ajax({
 			    url: href,
 			    type: "POST",
-			    //dataType: "json",
+			    data: data,
+			    dataType: "json",
 			    async: false,
 			    success: function (data) {
 			        console.info(data);
