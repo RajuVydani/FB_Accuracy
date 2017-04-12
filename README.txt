@@ -17,6 +17,9 @@ Need to implement
 	-log the user decision after popup came up.
 	-Show customized popup.
 
+Note:
+	We are using extension id in "js\jquery-ui-1.11.4-sunny.css@1221" to manually load the images it needed from images folder.
+	To make the extension work in all browsers, we need maintain the same id everywhere. To do that, we need to use the same key which is generated when packing the extension everywhere. For that purpose, Key is given in the manifest.json. While uploading it into the chrome store, need to give the same key file.
 
 ASCII values for alphabets.
 "65": "A",    

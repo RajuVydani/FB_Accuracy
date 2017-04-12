@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>Dialog</title>
+
+	<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.11.4.min.js"></script>
+	<link href="js/jquery-ui-1.11.4-sunny.css" rel="stylesheet" />
+	<script type="text/javascript">
+		$(document).ready(function (){
+			$('body').append(
+			    $('<div/>', {'id': 'dialog'})
+			    .append(
+		            $('<span/>', {text: 'Based on your accuracy trend, this can be an incorrect decision !!!'})
+			    )
+			    .append(
+			    	$('<br><br>')
+			    )
+			    .append(
+			    	$('<span/>', {text: 'Please review  the Job Once again \u263A'})
+			    )
+
+			);
+			$('#btn').click(function(){
+				$('#dialog').dialog("open");
+			});
+			$('#dialog').dialog({
+				title: 'Alert !!!',
+				draggable: false,
+				resizable: false,
+				autoOpen: false,
+				modal: true,
+				width: 550,
+				buttons: [
+						    {
+						      text: "Ok",
+						      click: function() {
+						        $( this ).dialog( "close" );
+						      }
+						    }
+						  ]
+			});	
+
+		});
+	</script>
+	
+</head>
+<body id="content">
+	<script type="text/javascript">
+
+	</script>
+	<input id="btn" type="button" value="ShowAlert" />
+	<!-- <div id="dialog">
+		<span>Based on your accuracy trend, this can be an incorrect decision !!!</span><br><br>
+		<span>Please review  the Job Once again &#x263A</span>
+	</div> -->
+	<input  type="button" value="ShowAlert2" />
+	<input type="text" />
+	
+</body>
+</html>

@@ -16,12 +16,39 @@ window.onload = function() {
 	});*/
 
 $(document).ready(function(){
+	/////Adding Custom alert
+	//using Jquery UI Theme -sunny.
+	$('body').append(
+	    $('<div/>', {'id': 'dialog'})
+	    .append(
+            $('<span/>', {text: 'Based on your accuracy trend, this can be an incorrect decision !!!'})
+	    )
+	    .append(
+	    	$('<br><br>')
+	    )
+	    .append(
+	    	$('<span/>', {text: 'Please review  the Job Once again \u263A'}) // '\u263A' is for smiley
+	    )
+	);
+	
+	$('#dialog').dialog({
+		title: 'Alert !!!',
+		draggable: false,
+		resizable: false,
+		autoOpen: false,
+		modal: true,
+		width: 410,
+		closeOnEscape: false
+	});	
+	
+	/////
 	
 	function log(message, value) {
 	 	if(showLogs) {
 	 		console.log(message, value);
 	 	}
 	}
+
 	//Getting the user data from the bottom of the file.
 	var user = getUsers();
 	//console.log("A Sravanthi", user["A Sravanthi"]);
@@ -33,7 +60,7 @@ $(document).ready(function(){
 	console.log("userTooltipName", userTooltipName);
 
 	//Adding users for testing.
-	user["Rubesh"] = [
+	user["Rubesh Kumar"] = [
 						"Entertainment/gaming-No, none of the below-Absolutely Certain",
 						"Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 						"Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",
@@ -45,10 +72,10 @@ $(document).ready(function(){
 						"None of the products/services below-Profanity-Absolutely Certain"
 				   	 ];
 	//If LoggedInUser not present in the users list here, throws error.
-	if(undefined !== user[userName]) {
+	if(undefined !== user[userTooltipName]) {
 		//"clickTags" -stores all the extracted tags for the loggedin user from var "user".
 		//It will be used by "MouseClick" events.
-		var clickTags = user[userName];
+		var clickTags = user[userTooltipName];
 
 		log("Tags under \"MouseClick\",\"Keypress\" events", clickTags);
 
@@ -58,7 +85,8 @@ $(document).ready(function(){
 			setTimeout(function(){
 				if(-1 !== $.inArray(getTags(), clickTags)) {  //if getTags() will be there in "clickTags", goes in.
 					console.log("Listening the click event...");
-					alert("Are you sure !!!");
+					//alert("Are you sure !!!");
+					$('#dialog').dialog("open");
 				}
 		    }, 200);
 		});
@@ -69,7 +97,7 @@ $(document).ready(function(){
 			if(70 === event.which || 102 === event.which || 13 === event.which) {
 				if(-1 !== $.inArray(getTags(), clickTags)) {  //if getTags() will be there in "clickTags", goes in.
 					console.log("Listening the Press event...");
-					alert("Are you sure !!!");
+					$('#dialog').dialog("open");
 				}
 			}
 		});
@@ -92,6 +120,46 @@ $(document).ready(function(){
 			}//.............................Checking "arrow status bar" has data
 			return tag;
 		}
+		//Mutation Observer START
+		var observer = new MutationObserver(function(mutations) {
+		    mutations.forEach(function(mutation) {
+		      console.log("mutation.type = " + mutation.type);
+		      console.log("Content", mutation.target);
+		      console.log("Calling rest API>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		      //postRequest();
+		      //Getting the case details
+		      console.log($('span._3-90._c24').text());
+		    });
+		  });
+
+		setTimeout(function(){
+			console.log("Adding Mutation Observers>>>");
+			observer.observe($('div._962 div:nth-child(3)')[0], { subtree: true, attributes: true, childList: true, characterData: true });
+		}, 20000);
+		//Mutation Observer END
+
+		//Rest calls START
+		function postRequest() {
+			log("In PostRequest", userName);
+			//var url = "http://10.142.131.108:8088/api/";
+			var url = "http://localhost:4000/api/";
+
+			var href = url + userName;
+			log(href, null);
+			$.ajax({
+			    url: href,
+			    type: "POST",
+			    //dataType: "json",
+			    async: false,
+			    success: function (data) {
+			        console.info(data);
+			    },
+			    error: function (data) {
+			   		console.error("error while doing POST ajax call");
+			    }
+			});
+		}
+		//Rest calls END
 	} else {
 		console.error("=================>loggedin user not in the list");
 	} // LoggedInUser
@@ -111,7 +179,7 @@ $(document).ready(function(){
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Cosmetic services (ex: waxing)-No, none of the below-Absolutely Certain",
 				    "News-No, none of the below-Absolutely Certain"
 				  ],
-				  "Abdul Aleen": [
+				  "Abdul Aleem": [
 				    "Adult Health (explicit sale of)-Explicit Diet/Weight Loss Product or Service-No, none of the below-Absolutely Certain",
 				    "Entertainment/gaming-No, none of the below-Absolutely Certain",
 				    "Non-Adult Health Physical Improvement (explicit sale of)-Non-ingestible treatments (ex: topical cream)-No, none of the below-Absolutely Certain",

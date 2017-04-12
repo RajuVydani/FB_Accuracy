@@ -1,5 +1,6 @@
 {
   "manifest_version": 2,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwC4JGdkXitO3luGDKS4pljQ217aEDQVfwYOiWbJ2WxyDCeCDbFMMpwCHro4dmkOwTK0lhz0yGr9QnHXC2UybxWPPnm7Q3gI/KnG4BVqzq4BbFwGf60IXVnraTwJ8V4XVchIzs5ciyL2LpGSJLVJa9H2KKps0e6EgwR3b8uEI62hW9Rj9fcW9vhghTHzfEnbYD9Ko08hnI8GvBgrSV06KD+B9wlWfOp981SGZ5ugiDELAc9YIqYyNNTVS1pbfQBRPLqF0KxES3ZmRiapCk0AoNUUi7VIEABXaTKaz/lK5SsAHkkzqiEqEoFJJx8fiaHauol6oB/pSoK7RjZW+VgtHfwIDAQAB",
 
   "name": "Facebook SRT Extension [Accuracy Improvement].",
   "description": "This extension shows alerts for Accuracy Improvements.",
@@ -8,7 +9,7 @@
       "48": "facebook.png"
   },
   "permissions": [
-    "activeTab"
+    "activeTab", "http://10.142.131.108:8088/api/*", "http://localhost:4000/*"
   ],
   "browser_action": {
     "default_icon": "facebook.png",
@@ -18,12 +19,16 @@
   "content_scripts": [
     {
       "matches": ["https://review.intern.facebook.com/*", "file://*/*"],
-      "js": ["js/jquery-2.2.4.min.js", "accuracy.js", "users.js"]
+      "css": ["js/jquery-ui-1.11.4-sunny.css"],
+      "js": ["js/jquery-2.2.4.min.js", "js/jquery-ui-1.11.4.min.js", "accuracy.js", "users.js"]
     }
   ],
   "background" : {
     "scripts": ["background.js"]
   },
+  "web_accessible_resources": [
+       "images/*"
+     ],
   "commands": {
     "COMBINATION_1": {
       "suggested_key": {
